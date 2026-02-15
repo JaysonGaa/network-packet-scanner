@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>Network Packet Dashboard</h1>
+    <p>Upload a PCAP file to analyze traffic</p>
+</header>
+
+<div class="upload-container">
+    <h2>Upload Packet Capture File</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="pcap_file" required>
+        <button type="submit">Upload & Analyze</button>
+    </form>
+</div>
+
+<div class="grid">
+    <div class="card">
+        <h2>Total Packets</h2>
+        <div class="stat">{{ total_packets }}</div>
+    </div>
+
+    <div class="card">
+        <h2>TCP Packets</h2>
+        <div class="stat">{{ tcp_packets }}</div>
+    </div>
+
+    <div class="card">
+        <h2>UDP Packets</h2>
+        <div class="stat">{{ udp_packets }}</div>
+    </div>
+
+    <div class="card">
+        <h2>Unique IPs</h2>
+        <div class="stat">{{ unique_ips }}</div>
+    </div>
+</div>
+
+<div class="output-table">
+    <div class="card">
+        <h2>Recent Packets</h2>
+        <table>
+            <tr>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Protocol</th>
+                <th>Time</th>
+            </tr>
+            {% for packet in packets %}
+            <tr>
+                <td>{{ packet.src }}</td>
+                <td>{{ packet.dst }}</td>
+                <td>{{ packet.protocol }}</td>
+                <td>{{ packet.time }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<div class="card">
+  <h2>Detected Vulnerabilities</h2>
+
+  <!-- Insecure Protocols - HIGH severity (Red) -->
+  <div class="vuln-section vuln-high">
+    <h3>Insecure Protocols</h3>
+    <ul>
+      {% for p in insecure_protocols %}
+        <li>{{ p }}</li>
+      {% else %}
+        <li class="no-vuln">✓ None detected</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Port/Protocol Mismatches - MEDIUM severity (Orange) -->
+  <div class="vuln-section vuln-medium">
+    <h3>Port / Protocol Mismatches</h3>
+    <ul>
+      {% for m in port_mismatches %}
+        <li>{{ m }}</li>
+      {% else %}
+        <li class="no-vuln">✓ None detected</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Weak TLS - HIGH severity (Red) -->
+  <div class="vuln-section vuln-high">
+    <h3>Weak TLS Versions</h3>
+    <ul>
+      {% for t in vuln_tls %}
+        <li>{{ t }}</li>
+      {% else %}
+        <li class="no-vuln">✓ None detected</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Plaintext Credentials - CRITICAL severity (Dark Red) -->
+  <div class="vuln-section vuln-critical">
+    <h3>Plaintext Credentials Detected</h3>
+    <ul>
+      {% for c in unencrypted_creds %}
+        <li>{{ c }}</li>
+      {% else %}
+        <li class="no-vuln">✓ None detected</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

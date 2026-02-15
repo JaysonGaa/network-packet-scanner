@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>Common Network Vulnerabilities</h1>
+    <p>Threats observable through packet-level monitoring</p>
+</header>
+<div class="card-list">
+    <div class="card">
+        <h2>ARP Spoofing / Man-in-the-Middle</h2>
+        <p>
+            Attackers send forged ARP responses to redirect traffic through their system.
+            Packet scanners can detect abnormal ARP replies and duplicate MAC-IP mappings.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Port Scanning</h2>
+        <p>
+            Reconnaissance technique where attackers send packets to multiple ports.
+            Detected by identifying sequential connection attempts to many ports from one source IP.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>DNS Tunneling</h2>
+        <p>
+            Malicious actors encode data inside DNS queries to bypass firewalls.
+            Unusual domain lengths and high-frequency DNS requests can indicate tunneling.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Suspicious Protocol Usage</h2>
+        <p>
+            Unexpected protocols (e.g., ICMP floods or unusual TCP flags) may indicate malware
+            command-and-control or denial-of-service activity.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Future Detection Features</h2>
+        <ul>
+            <li>Anomaly-based traffic detection</li>
+            <li>Machine learning classification of malicious flows</li>
+            <li>Real-time alerting system</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

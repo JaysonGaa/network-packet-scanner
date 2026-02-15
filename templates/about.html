@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>About PacketScan</h1>
+    <p>Educational network monitoring and security visualization tool</p>
+</header>
+
+<div class="card-list">
+    <div class="card">
+        <h2>Project Overview</h2>
+        <p>
+            PacketScan captures and analyzes network packets using Python and visualizes
+            traffic patterns through a Flask-based web dashboard.
+            The project is designed to demonstrate network security concepts and monitoring techniques.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Don't have any packet captures to scan?</h2>
+        <ul>
+            <li> <a href="https://wiki.wireshark.org/samplecaptures">WireShark SampleCapture</a></li>
+            <li> <a href="https://www.netresec.com/?page=PcapFiles">Netresec Publicly available PCAP files</a></li>
+             <li> <a href="https://www.netresec.com/?page=PcapFiles">See Files I Used to Test my Program</a></li>
+        </ul>
+    </div>
+
+        <div class="card">
+        <h2>Technologies Used</h2>
+        <ul>
+            <li>Python (PyShark for packet capture)</li>
+            <li>Flask (Web framework)</li>
+            <li>Chart.js (Traffic visualization)</li>
+            <li>HTML / CSS (Frontend dashboard)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Possible Future Improvements</h2>
+        <ul>
+            <li>Charts and Graphs for Visualization</li>
+            <li>Database storage for historical packet logs</li>
+            <li>Live WebSocket updates</li>
+            <li>SIEM integration and alerting</li>
+
+        </ul>
+    </div>
+</div>
+{% endblock %}
