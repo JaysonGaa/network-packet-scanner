@@ -1,2 +1,43 @@
 # network-packet-scanner
-A lightweight Python packet inspection tool built with PyShark for monitoring network traffic and detecting anomalous or suspicious activity.
+A Flask-based web application for analyzing network packet capture (PCAP) files and detecting security vulnerabilities in real-time.
+
+<img width="1895" height="982" alt="image" src="https://github.com/user-attachments/assets/b0fbf0ce-27c1-4e4b-a170-acaaaee8acae" />
+
+<img width="1899" height="982" alt="image" src="https://github.com/user-attachments/assets/daee7a85-3206-4d31-aafa-f1a8ba3bb180" />
+
+<img width="1895" height="989" alt="image" src="https://github.com/user-attachments/assets/78be7911-fe6a-4563-a3f7-58a9713194a6" />
+
+
+🔍 Comprehensive Vulnerability Detection
+
+Insecure Protocols: Detects HTTP, FTP, Telnet, and deprecated SSL
+Port Mismatches: Identifies suspicious port/protocol combinations
+Weak Encryption: Flags TLS 1.0 and 1.1 usage
+Credential Exposure: Detects plaintext credentials (FTP, Telnet, HTTP Basic Auth, SMTP, POP3, IMAP)
+
+📊 Traffic Analysis
+
+Real-time Statistics: Total packets, TCP/UDP breakdown, unique IPs
+Protocol Distribution: Interactive Chart.js visualization
+Recent Packets: View source, destination, protocol, and timestamp
+Color-Coded Severity: Critical (red), high (orange), medium (yellow)
+
+🎨 Modern UI/UX
+
+Dark theme with professional styling
+Responsive design for mobile and desktop
+Interactive charts and visualizations
+Clean, intuitive navigation
+
+🛠️ Tech Stack
+
+Backend: Flask (Python)
+Packet Analysis: PyShark (Wireshark/tshark wrapper)
+Frontend: HTML5, CSS3, JavaScript
+Deployment: Docker, Render
+
+📋 Prerequisites
+
+Python 3.8+
+Wireshark/tshark installed
+Basic understanding of network protocols
