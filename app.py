@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import os
-import sys
-import traceback
 from scanner import scan_pcap
 
 app = Flask(__name__)
@@ -33,7 +31,7 @@ def get_default_data():
 @app.route("/")
 def dashboard():
     # Get results from session if they exist, otherwise use defaults
-    results = session.pop('scan_results', None)  # pop removes it after reading
+    results = session.pop('scan_results', None)
     
     if results:
         return render_template("dashboard.html", **results)
@@ -42,52 +40,24 @@ def dashboard():
 
 @app.route("/upload", methods=["POST"])
 def upload():
-    try:
-        print("=" * 50, file=sys.stderr)
-        print("UPLOAD STARTED", file=sys.stderr)
-        print("=" * 50, file=sys.stderr)
-        
-        # Get the file
-        file = request.files["pcap_file"]
-        print(f"File received: {file.filename}", file=sys.stderr)
-        
-        # Save it
-        filepath = os.path.join(UPLOAD_FOLDER, file.filename)
-        file.save(filepath)
-        print(f"File saved to: {filepath}", file=sys.stderr)
-        print(f"File exists: {os.path.exists(filepath)}", file=sys.stderr)
-        print(f"File size: {os.path.getsize(filepath)} bytes", file=sys.stderr)
+    file = request.files["pcap_file"]
+    filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(filepath)
 
-        # Scan the file
-        print("Starting scan...", file=sys.stderr)
-        results = scan_pcap(filepath)
-        print("Scan completed successfully!", file=sys.stderr)
-        print(f"Results: {results}", file=sys.stderr)
-        
-        # Delete file after scanning to save space
-        try:
-            os.remove(filepath)
-            print("File deleted", file=sys.stderr)
-        except Exception as e:
-            print(f"Could not delete file: {e}", file=sys.stderr)
-        
-        # Store results in session
-        session['scan_results'] = results
-        
-        # Redirect to dashboard
-        return redirect(url_for('dashboard'))
-        
-    except Exception as e:
-        print("=" * 50, file=sys.stderr)
-        print("ERROR OCCURRED:", file=sys.stderr)
-        print(str(e), file=sys.stderr)
-        print(traceback.format_exc(), file=sys.stderr)
-        print("=" * 50, file=sys.stderr)
-        
-        # Return error to user
-        error_data = get_default_data()
-        session['scan_results'] = error_data
-        return redirect(url_for('dashboard'))
+    # Scan the file
+    results = scan_pcap(filepath)
+    
+    # Delete file after scanning to save space
+    try:
+        os.remove(filepath)
+    except:
+        pass
+    
+    # Store results in session
+    session['scan_results'] = results
+    
+    # Redirect to dashboard
+    return redirect(url_for('dashboard'))
 
 @app.route("/vulnerabilities")
 def vulnerabilities():
