@@ -14,35 +14,35 @@ A Flask-based web application for analyzing network packet capture (PCAP) files 
 </div>
 
 
-🔍 Comprehensive Vulnerability Detection
+## 🔍 Comprehensive Vulnerability Detection
 
 Insecure Protocols: Detects HTTP, FTP, Telnet, and deprecated SSL
 Port Mismatches: Identifies suspicious port/protocol combinations
 Weak Encryption: Flags TLS 1.0 and 1.1 usage
 Credential Exposure: Detects plaintext credentials (FTP, Telnet, HTTP Basic Auth, SMTP, POP3, IMAP)
 
-📊 Traffic Analysis
+## 📊 Traffic Analysis
 
 Real-time Statistics: Total packets, TCP/UDP breakdown, unique IPs
 Protocol Distribution: Interactive Chart.js visualization
 Recent Packets: View source, destination, protocol, and timestamp
 Color-Coded Severity: Critical (red), high (orange), medium (yellow)
 
-🎨 Modern UI/UX
+## 🎨 Modern UI/UX
 
 Dark theme with professional styling
 Responsive design for mobile and desktop
 Interactive charts and visualizations
 Clean, intuitive navigation
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 Backend: Flask (Python)
 Packet Analysis: PyShark (Wireshark/tshark wrapper)
 Frontend: HTML5, CSS3, JavaScript
 Deployment: Docker, Render
 
-📋 Prerequisites
+## 📋 Prerequisites
 
 Python 3.8+
 Wireshark/tshark installed
