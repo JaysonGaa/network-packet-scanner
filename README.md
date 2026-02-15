@@ -1,11 +1,17 @@
 # network-packet-scanner
 A Flask-based web application for analyzing network packet capture (PCAP) files and detecting security vulnerabilities in real-time.
 
-<img width="1895" height="982" alt="image" src="https://github.com/user-attachments/assets/b0fbf0ce-27c1-4e4b-a170-acaaaee8acae" />
 
-<img width="1899" height="982" alt="image" src="https://github.com/user-attachments/assets/daee7a85-3206-4d31-aafa-f1a8ba3bb180" />
+## 📸 Screenshots
 
-<img width="1895" height="989" alt="image" src="https://github.com/user-attachments/assets/78be7911-fe6a-4563-a3f7-58a9713194a6" />
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/b0fbf0ce-27c1-4e4b-a170-acaaaee8acae" width="45%" />
+  <img src="https://github.com/user-attachments/assets/daee7a85-3206-4d31-aafa-f1a8ba3bb180" width="45%" />
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/78be7911-fe6a-4563-a3f7-58a9713194a6" width="45%" />
+</div>
 
 
 🔍 Comprehensive Vulnerability Detection
