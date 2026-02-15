@@ -1,0 +1,16 @@
+env/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.git
+.gitignore
+.DS_Store
+uploads/*.pcap
+uploads/*.pcapng
+*.log
+.env
+README.md
